@@ -1,0 +1,17 @@
+{
+  "POLICYID": {
+    "access_rights": {
+      "OUTPOST": {
+        "api_id": "OUTPOST",
+        "api_name": "Outpost"
+      }
+    },
+    "active": true,
+    "name": "POLICY NAME",
+    "rate": 100,
+    "per": 1,
+    "quota_max": 10000,
+    "quota_renewal_rate": 3600,
+    "tags": ["Startup Users"]
+  }
+}

@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+  tyk-gateway:
+    image: docker.tyk.io/tyk-gateway/tyk-gateway:v4.3.3
+    ports:
+      - 8080:8080
+    networks:
+      - tyk
+    volumes:
+      - ./tyk.dev.conf:/opt/tyk-gateway/tyk.conf
+      - ./apps:/opt/tyk-gateway/apps
+      - ./middleware:/opt/tyk-gateway/middleware
+      - ./certs:/opt/tyk-gateway/certs
+      - ./policies:/opt/tyk-gateway/policies
+    depends_on:
+      - tyk-redis
+  tyk-redis:
+    image: redis:6.2.7-alpine
+    networks:
+      - tyk
+    ports:
+      - 6379:6379
+
+  # redis-cache:
+  #   image: redis:7.0.10-alpine
+  #   command: /bin/sh -c "redis-server --requirepass password"
+  #   networks:
+  #     - tyk
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - ./redis-db:/data
+  #   environment:
+  #     REDIS_HOST_PASSWORD: password
+
+networks:
+  tyk:

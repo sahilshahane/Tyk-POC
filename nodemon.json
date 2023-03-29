@@ -1,0 +1,12 @@
+{
+  "verbose": false,
+  "ignore": ["*.test.js", "**/node_modules/**"],
+  "watch": [
+    "apps/**",
+    ".env",
+    "policies/**",
+    "middleware/**",
+    "cloud-plugin/**"
+  ],
+  "exec": "pnpm tyk:reload:hot"
+}
